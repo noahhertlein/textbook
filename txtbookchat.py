@@ -2,9 +2,12 @@ import streamlit as st
 import chromadb
 import ollama
 from typing import List, Dict
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Password for accessing the application
-APP_PASSWORD = "admin"  # Change this to your desired password
+APP_PASSWORD = os.getenv("APP_PASSWORD")  # Change this to your desired password
 
 # Initialize Ollama client
 ollama_client = ollama.Client(host="http://localhost:11434")
