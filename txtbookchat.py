@@ -109,15 +109,15 @@ if st.session_state.authenticated:
         
         # Model selection
         st.subheader("Models")
-        model1 = st.selectbox("TVM Time Value Analysis Model", ["qwen2.5:14b", "llama3", "llama2"], key="model1")
-        model2 = st.selectbox("TVM Interest Rate Analysis Model", ["qwen2.5:14b", "llama3", "llama2"], key="model2")
-        synthesis_model = st.selectbox("Cross-Analysis Model", ["qwen2.5:14b", "llama3", "llama2"], key="synthesis")
+        model1 = st.selectbox("TVM Time Value Analysis Model", ["llama3.2", "llama3", "llama2", "mistral", "qwen2.5:14b"], key="model1")
+        model2 = st.selectbox("TVM Interest Rate Analysis Model", ["llama3.2", "llama3", "llama2", "mistral", "qwen2.5:14b"], key="model2")
+        synthesis_model = st.selectbox("Cross-Analysis Model", ["llama3.2", "llama3", "llama2", "mistral", "qwen2.5:14b"], key="synthesis")
         
         # System prompts
         st.subheader("System Prompts")
-        prompt1 = st.text_area("TVM Time Value Analysis Prompt", "You are an expert analyzing the time value of money. Provide insights and examples.")
-        prompt2 = st.text_area("TVM Interest Rate Analysis Prompt", "You are an expert analyzing the impact of interest rates on the time value of money.")
-        synthesis_prompt = st.text_area("Synthesis Prompt", "Combine both analyses into actionable insights for financial decision-making.")
+        prompt1 = st.text_area("TVM Time Value Analysis Prompt", "You are an expert in analyzing the time value of money (TVM). The concept of TVM emphasizes that a dollar today is worth more than the same dollar in the future due to its earning potential and associated risks. Using the principles covered in the textbook, explain how the present value (PV) and future value (FV) of cash flows are calculated. Include methods for handling compounding periods and the relevance of inflation and discount rates. Ensure all examples use accurate formulas and are displayed clearly in Markdown or LaTeX for precision.")
+        prompt2 = st.text_area("TVM Interest Rate Analysis Prompt", "You are a financial expert focusing on the impact of interest rates on investments and debts. Using the textbook principles, provide an analysis of how interest rates influence the pricing of financial instruments, including discount bonds, simple loans, and fixed-payment loans. Discuss yield to maturity, real versus nominal rates, and the inverse relationship between bond prices and market interest rates. Present all formulas and examples using Markdown or properly formatted LaTeX for clarity.")
+        synthesis_prompt = st.text_area("Synthesis Prompt", "Combine insights from the Time Value of Money (TVM) and Interest Rate Analyses. Discuss how the interplay of interest rates and the time value of money affects financial decision-making. Address practical applications, such as retirement planning, debt repayment strategies, and investment decisions. Provide your recommendations and conclusions clearly, with examples formatted in Markdown or LaTeX to ensure readability.")
         if st.button("Clear Chat History"):
             st.session_state.messages = []
             st.rerun()
